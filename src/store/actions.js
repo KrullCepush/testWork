@@ -50,6 +50,7 @@ export const authFuncAC = formData => {
 
   return async dispatch => {
     dispatch(authStartAC());
+
     const res = new Promise((resolve, reject) => {
       setTimeout(() => {
         //...имитация отправки запроса через fetch
@@ -78,6 +79,7 @@ export const authFuncAC = formData => {
         }
       }, 1000);
     });
+
     const dataJson = await res;
     const data = JSON.parse(dataJson);
 
@@ -113,7 +115,7 @@ export const logOutFunctionAC = () => {
         resolve(true);
       }, 1000);
     });
-    const data = await logOut;
+    await logOut;
     localStorage.removeItem("myKey");
     dispatch(logOutAC());
     dispatch(authEndAC());

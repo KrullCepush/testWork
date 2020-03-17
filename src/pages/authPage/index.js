@@ -1,57 +1,64 @@
-import React, { useState } from "react";
+import React from "react";
+import { Formik, Field, Form } from "formik";
+import clsx from "clsx";
+
+import FormSchema from "../../utils/FormSchema";
+
 import { useSelector, useDispatch } from "react-redux";
 import { authFuncAC } from "../../store/actions";
+import "./index.css";
 
 export default function AuthPage() {
   const dispatch = useDispatch();
   const errorAuth = useSelector(state => state.errorAuth);
 
-  const [inputs, setInputs] = useState({
-    login: "",
-    password: ""
-  });
-
-  const updateInputs = e => {
-    setInputs({
-      ...inputs,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const logIn = e => {
-    e.preventDefault();
-    dispatch(authFuncAC(inputs));
+  const logIn = data => {
+    dispatch(authFuncAC(data));
   };
 
   return (
     <div className="form">
-      <h2> AuthPage </h2>
+      <h2 className="form__title"> AuthPage </h2>
 
-      <form onSubmit={logIn}>
-        <div className="form__input">
-          <label>Login</label>
-          <input
-            onChange={updateInputs}
-            value={inputs.login}
-            name="login"
-            type="text"
-          />
-          {errorAuth.login && <span>{errorAuth.login}</span>}
-        </div>
+      <Formik
+        initialValues={{
+          login: "",
+          password: ""
+        }}
+        validationSchema={FormSchema}
+        onSubmit={values => logIn(values)}
+        render={({ errors, touched }) => (
+          <Form>
+            <div className="form__input">
+              <label htmlFor="login"> Login </label>
+              <Field
+                name="login"
+                type="text"
+                className={clsx(errorAuth.login && "form__input_error")}
+              />
+              <div className="form__input_text">
+                {(touched.login && errors.login) || errorAuth.login}
+              </div>
+            </div>
 
-        <div className="form__input">
-          <label>Password</label>
-          <input
-            onChange={updateInputs}
-            value={inputs.password}
-            name="password"
-            type="password"
-          />
-          {errorAuth.password && <span>{errorAuth.password}</span>}
-        </div>
+            <div className="form__input">
+              <label htmlFor="password"> password </label>
+              <Field
+                name="password"
+                type="password"
+                className={clsx(errorAuth.password && "form__input_error")}
+              />
+              <div className="form__input_text">
+                {(touched.password && errors.password) || errorAuth.password}
+              </div>
+            </div>
 
-        <button className="form__btn">Войти</button>
-      </form>
+            <button type="submit" className="form__btn">
+              login
+            </button>
+          </Form>
+        )}
+      />
     </div>
   );
 }

@@ -1,0 +1,31 @@
+.home__title {
+  padding: 2rem 0;
+  font-size: 1.5rem;
+  display: block;
+  text-align: center;
+}
+
+.home__desc {
+  padding: 2rem;
+  font-size: 1rem;
+  text-align: center;
+  color: green;
+}
+
+.home__btn:focus {
+  outline: none;
+}
+
+.home__btn {
+  display: block;
+  width: 10rem;
+  padding: 0.75rem;
+  border: 4px solid #0c7a09;
+  border-radius: 1.3rem;
+  box-shadow: 10px 5px 5px rgb(53, 46, 46);
+  font-size: 1rem;
+  font-weight: 800;
+  color: #0b2349;
+  background-color: #fff;
+  margin: 0 auto;
+}

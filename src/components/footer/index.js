@@ -1,5 +1,10 @@
 import React from "react";
+import "./index.css";
 
 export default function Footer() {
-  return <h3> Made by Krull </h3>;
+  return (
+    <footer className="footer">
+      <h3 className="footer-title"> Made by "filich98@gmail.com" </h3>
+    </footer>
+  );
 }

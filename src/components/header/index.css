@@ -1,0 +1,12 @@
+.header {
+  min-height: 10vh;
+  border-bottom: 5px solid grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.header-title {
+  font-size: 2rem;
+}
