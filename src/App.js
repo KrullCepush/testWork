@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Switch, Route, Redirect } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
+import { initialAuthAC } from "./store/actions";
 
 import Header from "./components/header";
 import Footer from "./components/footer";
@@ -12,11 +15,13 @@ import MainPage from "./pages/mainPaige";
 function App() {
   const location = useLocation();
   const loggedIn = localStorage.getItem("myKey"); // ЭТО ПРОСТЕЙШАЯ ИМИТАЦИЯ АВТОРИЗАЦИИ, ЧЕРЕЗ LOCALSTORAGE
-  console.log(loggedIn);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    document.body.scrollTop = document.documentElement.scrollTop = 0;
-  }, [location.pathname]);
+    dispatch(initialAuthAC(!!loggedIn));
+  }, []);
+
+  const isAuth = useSelector(state => state.authStatus);
 
   return (
     <div>
@@ -24,10 +29,10 @@ function App() {
       <Main>
         <Switch>
           <Route exact path="/">
-            {loggedIn === "auth" ? <Redirect to="/home" /> : <AuthPage />}
+            {isAuth ? <Redirect to="/home" /> : <AuthPage />}
           </Route>
           <Route exact path="/home">
-            {loggedIn !== "auth" ? <Redirect to="/" /> : <MainPage />}
+            {!isAuth ? <Redirect to="/" /> : <MainPage />}
           </Route>
         </Switch>
       </Main>

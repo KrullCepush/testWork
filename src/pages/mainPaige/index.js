@@ -1,18 +1,18 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logOutFunctionAC } from "../../store/actions";
 
 export default function MainPage() {
-  const history = useHistory();
+  const dispatch = useDispatch();
 
   const logOut = () => {
-    localStorage.setItem("myKey", null);
-    console.log(localStorage.getItem("myKey"));
-    history.push("/");
+    dispatch(logOutFunctionAC());
   };
 
   return (
     <div>
-      <h2> mainPage </h2>
+      <h2> Hello World! </h2>
+      <p> Все как бы работает, но надо тестить </p>
       <button onClick={logOut}> Выйти </button>
     </div>
   );
