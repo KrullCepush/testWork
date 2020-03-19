@@ -1,0 +1,12 @@
+.footer {
+  min-height: 20vh;
+  border-top: 5px solid grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.footer-title {
+  font-size: 2rem;
+}

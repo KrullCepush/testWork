@@ -38,13 +38,6 @@ export default function(state = initialState, action) {
       };
     }
 
-    case INITIAL_AUTH: {
-      return {
-        ...state,
-        authStatus: action.payload
-      };
-    }
-
     case AUTH_ACTION_START:
       return {
         ...state,

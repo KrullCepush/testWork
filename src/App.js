@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -13,13 +12,7 @@ import AuthPage from "./pages/authPage";
 import MainPage from "./pages/mainPaige";
 
 function App() {
-  const location = useLocation();
-  const loggedIn = localStorage.getItem("myKey"); // ЭТО ПРОСТЕЙШАЯ ИМИТАЦИЯ АВТОРИЗАЦИИ, ЧЕРЕЗ LOCALSTORAGE
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(initialAuthAC(!!loggedIn));
-  }, []);
 
   const isAuth = useSelector(state => state.authStatus);
 
