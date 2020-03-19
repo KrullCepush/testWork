@@ -12,12 +12,7 @@ import AuthPage from "./pages/authPage";
 import MainPage from "./pages/mainPaige";
 
 function App() {
-  const loggedIn = localStorage.getItem("myKey"); // ЭТО ПРОСТЕЙШАЯ ИМИТАЦИЯ КУКИ, ЧЕРЕЗ LOCALSTORAGE
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(initialAuthAC(!!loggedIn));
-  }, []);
 
   const isAuth = useSelector(state => state.authStatus);
 

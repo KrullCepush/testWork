@@ -84,7 +84,6 @@ export const authFuncAC = formData => {
     const data = JSON.parse(dataJson);
 
     if (data.status) {
-      localStorage.setItem("myKey", "auth");
       dispatch(compliteAuthAC());
     } else {
       if (data.type === "login") {
@@ -103,6 +102,7 @@ export const authFuncAC = formData => {
         );
       }
     }
+
     dispatch(authEndAC());
   };
 };
@@ -116,7 +116,6 @@ export const logOutFunctionAC = () => {
       }, 1000);
     });
     await logOut;
-    localStorage.removeItem("myKey");
     dispatch(logOutAC());
     dispatch(authEndAC());
   };
