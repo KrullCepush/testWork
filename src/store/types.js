@@ -1,5 +1,3 @@
-export const INITIAL_AUTH = "INITIAL_AUTH";
-
 export const AUTH_ACTION_START = "AUTH_ACTION_START";
 export const AUTH_ACTION_END = "AUTH_ACTION_END";
 

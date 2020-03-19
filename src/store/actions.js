@@ -1,18 +1,10 @@
 import {
-  INITIAL_AUTH,
   COMPLITE_AUTH,
   ERROR_AUTH,
   AUTH_ACTION_START,
   AUTH_ACTION_END,
   LOG_OUT
 } from "./types";
-
-export const initialAuthAC = status => {
-  return {
-    type: INITIAL_AUTH,
-    payload: status
-  };
-};
 
 const logOutAC = () => {
   return {

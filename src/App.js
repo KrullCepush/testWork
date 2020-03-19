@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-
-import { initialAuthAC } from "./store/actions";
+import { useSelector } from "react-redux";
 
 import Header from "./components/header";
 import Footer from "./components/footer";
@@ -12,8 +10,6 @@ import AuthPage from "./pages/authPage";
 import MainPage from "./pages/mainPaige";
 
 function App() {
-  const dispatch = useDispatch();
-
   const isAuth = useSelector(state => state.authStatus);
 
   return (

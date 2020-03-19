@@ -1,5 +1,4 @@
 import {
-  INITIAL_AUTH,
   COMPLITE_AUTH,
   ERROR_AUTH,
   AUTH_ACTION_START,
@@ -30,13 +29,6 @@ export default function(state = initialState, action) {
         ...state,
         authStatus: true
       };
-
-    case INITIAL_AUTH: {
-      return {
-        ...state,
-        authStatus: action.payload
-      };
-    }
 
     case AUTH_ACTION_START:
       return {
